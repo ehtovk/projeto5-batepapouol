@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #F3F3F3;
+}
+
+.join-page {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 3;
+    background-color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+ .hidden {
+    display: none;
+}
+
+.join-page img {
+    width: 130px;
+    height: 92px;
+    margin-top: 72px;
+    margin-bottom: 94px;
+}
+
+.join-page input {
+    width: 261px;
+    height: 54px;
+    outline: none;
+    border: 1px solid #D7D7D7;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 18px;
+}
+
+.join-page input::placeholder {
+    color: #AEAEAE;
+}
+
+.join-page button {
+    width: 109px;
+    height: 45px;
+    background-color: #E7E7E7;
+    border-radius: 9px;
+    border: none;
+}
+
+.join-page button p {
+    font-weight: 400;
+    font-size: 15px;
+    text-align: center;
+    color: rgba(105, 105, 105, 0.9);
+}
+
+.main-page header {
+    background-color: #ffffff;
+    width: 100vw;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+}
+.main-page header img {
+    margin: 0px 22px;
+}
+
+.main-page footer {
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    left: 0;
+    background-color: #ffffff;
+    width: 100vw;
+    height: 80px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.main-page footer input {  
+    font-size: 18px;
+    font-weight: 400;
+    color: black;
+    border: none;
+    outline: none;
+}
+
+.main-page footer * {
+    margin: 0px 17px;
+}
+
+.main-page footer input::placeholder {
+    color: black;
+    font-style: italic;
+}
+
+.blur {
+    width: 0;
+    height: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.blur.show {
+    width: 100%;
+    height: 100vh;
+    z-index: 5;
+    position: fixed;
+}
+
+.menu {
+    width: 0;
+    height: 0;
+    background-color: #FFFFFF;
+    position: fixed;
+    z-index: 6;
+    right: 0;
+    transition: width 0.28s;
+}
+
+.menu.active {
+    width: 70%;
+    height: 100vh;
+    position: fixed;
+    z-index: 6;
+    right: 0;
+    top: 0;
+}
+

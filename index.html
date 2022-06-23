@@ -10,10 +10,10 @@
 </head>
 <body>
     
-    <section class="join-page hidden">
+    <section class="join-page ">
         <img src="assets/img/logo 2.svg" alt="">
         <input type="text" placeholder="Digite seu nome" id="">
-        <button onclick="closeJoinPage()"><p>Entrar</p></button>
+        <button onclick="joinRoom()"><p>Entrar</p></button>
     </section>
 
     <section class="main-page">
@@ -30,28 +30,52 @@
 
     <div class="blur" onclick="closeMenu()"></div>
     <div class="menu">
-        <h1>Escolha um contato para enviar mensagem:</h1>
-        <div>
-            <img src="assets/img/people 1.svg" alt="">
-            <h3>Todos</h3>
-        </div>
-        <div>
-            <img src="assets/img/person-circle 1.svg" alt="">
-            <h3></h3>
-        </div>
-        <h1>Escolha a visibilidade:</h1>
-        <div>
-            <img src="assets/img/lock-open 1.svg" alt="">
-            <h3>Público</h3>
-        </div>
-        <div>
-            <img src="assets/img/lock-closed 1.svg" alt="">
-            <h3>Reservadamente</h3>
-        </div>
+        <section class="contact">
+            <h1>Escolha um contato para enviar mensagem:</h1>
+            <div class="wrap" onclick="selectContact(this)">
+                <div>
+                    <img src="assets/img/people 2.svg" alt="">
+                    <h3>Todos</h3>
+                </div>
+                <img class="checked" src="assets/img/check.svg" alt="">
+            </div>
+            <div class="wrap" onclick="selectContact(this)">
+                <div>
+                    <img src="assets/img/person-circle 1.svg" alt="">
+                    <h3>José</h3>
+                </div>
+                <img class="" src="assets/img/check.svg" alt="">
+            </div>
+            <div class="wrap" onclick="selectContact(this)">
+                <div>
+                    <img src="assets/img/person-circle 1.svg" alt="">
+                    <h3>Júlia</h3>
+                </div>
+                <img class="" src="assets/img/check.svg" alt="">
+            </div>
+        </section>
+        <section class="privacy">
+            <h2>Escolha a visibilidade:</h2>
+            <div class="wrap" onclick="selectPrivacy(this)">
+                <div>
+                    <img src="assets/img/lock-open 1.svg" alt="">
+                    <h3>Público</h3>
+                </div>
+                <img class="checked" src="assets/img/check.svg" alt="">
+            </div>
+            <div class="wrap" onclick="selectPrivacy(this)">
+                <div>
+                    <img src="assets/img/lock-closed 1.svg" alt="">
+                    <h3>Reservadamente</h3>
+                </div>
+                <img class="" src="assets/img/check.svg" alt="">
+            </div>
+        </section>
     </div>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.  js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>

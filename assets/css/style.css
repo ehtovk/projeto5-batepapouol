@@ -2,6 +2,7 @@
 
 * {
     font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
 }
 
 body {
@@ -133,6 +134,8 @@ body {
     z-index: 6;
     right: 0;
     transition: width 0.28s;
+
+    font-family: 'Roboto';
 }
 
 .menu.active {
@@ -143,4 +146,50 @@ body {
     right: 0;
     top: 0;
 }
+
+.menu h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    line-height: 18px;
+}
+
+.menu h2 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.menu div {
+    display: flex;
+    align-items: center;
+}
+
+.menu .wrap div img {
+    margin-right: 7px;
+}
+
+.menu .wrap {
+    margin-left: 17px;
+    margin-right: 27px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    justify-content: space-between;
+}
+
+.menu .wrap>img {
+    opacity: 0;
+}
+
+.menu .wrap img.checked {
+    opacity: 1;
+}
+
+
+
 

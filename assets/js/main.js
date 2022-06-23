@@ -63,6 +63,7 @@ function verifyEntrance(answer) {
     let verify = answer.status;
     console.log(verify);
     closeJoinPage();
+    addUserToList();
 }
 
 /*======== FUNÇÃO DE VERIFICAR ERRO ================*/
@@ -84,5 +85,15 @@ function getMessages() {
 }
 getMessages();
 
-
+function addUserToList() {
+    let elemento = document.querySelector(".contact");
+    elemento.innerHTML += 
+    `            <div class="wrap" onclick="selectContact(this)">
+                    <div>
+                        <img src="assets/img/person-circle 1.svg" alt="">
+                        <h3>${nome}</h3>
+                    </div>
+                    <img class="" src="assets/img/check.svg" alt="">
+                </div>`
+}
 

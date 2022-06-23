@@ -14,7 +14,6 @@ function openMenu() {
 function closeMenu() {
     document.querySelector(".menu").classList.remove("active");
     document.querySelector(".blur").classList.remove("show");
-    console.log("teste")
 }
 
 /*======== FUNÇÃO DE SELECIONAR O CONTATO ====================*/
@@ -40,6 +39,7 @@ function selectPrivacy(element) {
 /*======== FUNÇÕES E VARIÁVEIS PARA A API ====================*/
 
 let nome;
+let nomes;
 
 /*======== FUNÇÃO DE CADASTRO NO NOME DE ENTRADA =============*/
 
@@ -63,7 +63,8 @@ function verifyEntrance(answer) {
     let verify = answer.status;
     console.log(verify);
     closeJoinPage();
-    addUserToList();
+    getUsers();
+    seeUsers();
 }
 
 /*======== FUNÇÃO DE VERIFICAR ERRO ================*/
@@ -85,15 +86,27 @@ function getMessages() {
 }
 getMessages();
 
+function getUsers() {
+    let promisse = axios.get("https://mock-api.driven.com.br/api/v6/uol/participants");
+    promisse.then(seeUsers)
+}
+
+function seeUsers(answer) {
+    nomes = answer.data;
+    addUserToList();
+}
+
 function addUserToList() {
     let elemento = document.querySelector(".contact");
-    elemento.innerHTML += 
-    `            <div class="wrap" onclick="selectContact(this)">
-                    <div>
-                        <img src="assets/img/person-circle 1.svg" alt="">
-                        <h3>${nome}</h3>
-                    </div>
-                    <img class="" src="assets/img/check.svg" alt="">
-                </div>`
+    for(let i = 0; i < nomes.length; i++){
+        elemento.innerHTML += 
+        `            <div class="wrap" onclick="selectContact(this)">
+                        <div>
+                            <img src="assets/img/person-circle 1.svg" alt="">
+                            <h3>${nomes[i].name}</h3>
+                        </div>
+                        <img class="" src="assets/img/check.svg" alt="">
+                    </div>`
+    }
 }
 

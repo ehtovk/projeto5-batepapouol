@@ -73,6 +73,7 @@ setInterval(verifyUser, 5000);
 
 function verifyEntrance() {
     closeJoinPage();
+    document.querySelector(".fix").scrollIntoView({block: "end"});
     getUsers();
     getMessages();
 }
@@ -115,8 +116,6 @@ function addMessages(msg) {
         </li>
         `
     }
-    document.querySelector(".fix").scrollIntoView({block: "end"});
-
 }
 
 setInterval(getMessages, 3000);

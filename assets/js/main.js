@@ -1,4 +1,3 @@
-
 /*======== FUNÇÃO DE FECHAR A PÁGINA DE ENTRADA ================*/
 function closeJoinPage() {
     document.querySelector(".join-page").classList.add("hidden");
@@ -36,8 +35,7 @@ function selectPrivacy(element) {
     click.classList.add("checked");
 }
 
-/*======== FUNÇÕES E VARIÁVEIS PARA A API ====================*/
-
+/*======== FUNÇÕES E VARIÁVEIS  ====================*/
 let nome;
 let nomes;
 let messages_On_Screen = document.querySelector(".messages ul");
@@ -46,9 +44,9 @@ let message;
 let my_message;
 let my_message_obj;
 let cadastro_Nome = {};
+let input_Enter = document.querySelector("footer>input");
 
 /*======== FUNÇÃO DE CADASTRO NO NOME DE ENTRADA =============*/
-
 function joinUser() {
     nome = document.querySelector(".join-page>input").value;
     cadastro_Nome = 
@@ -66,11 +64,9 @@ function joinUser() {
 function verifyUser() {
     let promise = axios.post('https://mock-api.driven.com.br/api/v6/uol/status', cadastro_Nome);
 }
-
 setInterval(verifyUser, 5000);
 
 /*======== FUNÇÃO DE VERIFICAR A ENTRADA ================*/
-
 function verifyEntrance() {
     closeJoinPage();
     document.querySelector(".fix").scrollIntoView({block: "end"});
@@ -79,26 +75,29 @@ function verifyEntrance() {
 }
 
 /*======== FUNÇÃO DE VERIFICAR ERRO ================*/
-
 function verifyError(error) {
     let verify = error.response.status;
     console.log(verify);
     if (verify === 400) {
-        alert("Escolha outro nome!");
+        alert("Este nome está em uso, scolha outro!");
+        document.querySelector(".join-page>input").value = "";
     }
 }
 
+/*======== FUNÇÃO DE PEGAR MENSAGENS DO SERVIDOR ============*/
 function getMessages() {
     let promisse = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages");
     promisse.then(seeMessages);
 }
 
+/*======== FUNÇÃO DE VER AS MENSAGENS DO SERVIDOR ===========*/
 function seeMessages(messages) {
     messages_On_Screen.innerHTML="";
     message = messages.data;
     message.forEach(addMessages);
 }
 
+/*======== FUNÇÃO DE ADICIONAR AS MENSAGENS AO HTML============*/
 function addMessages(msg) {
 
     if(msg.type === "status") {
@@ -115,16 +114,24 @@ function addMessages(msg) {
             <p><a> (${msg.time}) </a><strong> ${msg.from} </strong> para <strong> ${msg.to}: </strong> ${msg.text} </p>
         </li>
         `
+    } else if(msg.type === "private_message") {
+        messages_On_Screen.innerHTML +=
+        `
+        <li class="${msg.type}">
+            <p><a> (${msg.time}) </a><strong> ${msg.from} </strong> reservadamente para <strong> ${msg.to}: </strong> ${msg.text} </p>
+        </li>
+        `
     }
 }
-
 setInterval(getMessages, 3000);
 
+/*======== FUNÇÃO DE PEGAR OS USUÁRIOS ================*/
 function getUsers() {
     let promisse = axios.get("https://mock-api.driven.com.br/api/v6/uol/participants");
     promisse.then(seeUsers)
 }
 
+/*======== FUNÇÃO DE VER OS USUAÁRIOS ================*/
 function seeUsers(answer) {
     user_On_Screen.innerHTML=
     `
@@ -141,6 +148,7 @@ function seeUsers(answer) {
     addUserToList();
 }
 
+/*======== FUNÇÃO DE ADICIONAR OS USUÁRIOS ================*/
 function addUserToList() {
     for(let i = 0; i < nomes.length; i++){
         user_On_Screen.innerHTML += 
@@ -153,9 +161,9 @@ function addUserToList() {
                     </div>`
     }
 }
-
 setInterval(getUsers, 10000);
 
+/*======== FUNÇÃO DE ENVIAR MENSAGENS ================*/
 function sendMessage() {
     my_message = document.querySelector("footer>input").value;
     my_message_obj = 
@@ -170,13 +178,20 @@ function sendMessage() {
     promise.catch(errorMessage);
 }
 
+/*===== FUNÇÃO DE VERIFICAR SE A MENSAGEM FOI ENVIADA ========*/
 function messageSent() {
     document.querySelector("footer>input").value = "";
     getMessages();
 }
 
 function errorMessage() {
-    window.location.reload()
+    window.location.reload();
 }
 
-
+/*======== BONUS: ENVIAR MENSAGEM COM ENTER ================*/
+input_Enter.addEventListener("keyup", event => {
+    if(event.keyCode === 13) {
+        event.preventDefault();
+        document.querySelector("footer>img").click();
+    }
+});

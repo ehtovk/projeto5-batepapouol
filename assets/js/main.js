@@ -77,7 +77,6 @@ function verifyEntrance() {
 /*======== FUNÇÃO DE VERIFICAR ERRO ================*/
 function verifyError(error) {
     let verify = error.response.status;
-    console.log(verify);
     if (verify === 400) {
         alert("Este nome está em uso, scolha outro!");
         document.querySelector(".join-page>input").value = "";

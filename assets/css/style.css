@@ -226,6 +226,10 @@ li.status {
     background-color: #DCDCDC;
 }
 
+li.private-message {
+    background-color: #FFDEDE;
+}
+
 li a {
     color: #AAAAAA;
 }
@@ -233,8 +237,3 @@ li a {
 li strong {
     font-weight: bold;
 }
-
-
-
-
-

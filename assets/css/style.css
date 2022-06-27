@@ -205,10 +205,10 @@ body {
     padding:8px 10px;
     margin-bottom: 4px;
     color: black;
-    background-color: #FFF;
+    
 }
 
-.message{
+li.message{
     background-color: #FFF;
 }
 
@@ -226,7 +226,7 @@ li.status {
     background-color: #DCDCDC;
 }
 
-li.private-message {
+li.private_message {
     background-color: #FFDEDE;
 }
 
